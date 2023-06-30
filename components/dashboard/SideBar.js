@@ -1,50 +1,54 @@
 import React from 'react'
 import Image from 'next/image'
 
+import Logo from '../../assets/courses.svg'
+
 const SideBar = () => {
   return (
     <div
-      class="flex h-screen flex-col bg-[#F2EAE1]"
+      className="flex h-screen flex-col bg-[#F2EAE1]"
       style={{ maxWidth: '270px' }}
     >
-      <div class="flex items-center p-4">
-        <div class="h-12 w-12 rounded-full bg-white"></div>
-        <div class="ml-2">
-          <p class="font-bold">John Doe</p>
+      <div className="flex items-center p-4">
+        <div className="h-12 w-12 rounded-full bg-white"></div>
+        <div className="ml-2">
+          <p className="font-bold">John Doe</p>
           <p>Admin</p>
         </div>
       </div>
 
-      <div class="p-4">
+      <Logo />
+
+      <div className="p-4">
         <nav>
           <ul>
-            <li class="mb-2">
-              <a href="#" class="font-medium ">
+            <li className="mb-2">
+              <a href="#" className="font-medium ">
                 Home
               </a>
             </li>
-            <li class="mb-2">
-              <a href="#" class="font-medium">
+            <li className="mb-2">
+              <a href="#" className="font-medium">
                 Course
               </a>
             </li>
-            <li class="mb-2">
-              <a href="#" class="font-medium">
+            <li className="mb-2">
+              <a href="#" className="font-medium">
                 Students
               </a>
             </li>
-            <li class="mb-2">
-              <a href="#" class="font-medium">
+            <li className="mb-2">
+              <a href="#" className="font-medium">
                 Payment
               </a>
             </li>
-            <li class="mb-2">
-              <a href="#" class="font-medium">
+            <li className="mb-2">
+              <a href="#" className="font-medium">
                 Report
               </a>
             </li>
-            <li class="mb-2">
-              <a href="#" class="font-medium">
+            <li className="mb-2">
+              <a href="#" className="font-medium">
                 Settings
               </a>
             </li>
@@ -52,8 +56,8 @@ const SideBar = () => {
         </nav>
       </div>
 
-      <div class="mt-auto p-4">
-        <a href="#" class="font-medium">
+      <div className="mt-auto p-4">
+        <a href="#" className="font-medium">
           Logout
         </a>
       </div>
