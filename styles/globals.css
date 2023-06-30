@@ -1,7 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.test-tailwind {
-  @apply rounded bg-blue-500 px-4 py-2 text-3xl text-base font-bold text-white underline;
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --primary: #feaf00;
+  --secondary: #f8d442;
+}
+
+.WWWWWW {
+  @apply rounded;
+}
+
+@layer utilities {
+  /* SIGNIN */
+  .special-left-border {
+    margin-right: 10px;
+    border-left: 6px solid;
+    margin-left: -13px;
+    border-color: var(--secondary);
+  }
+  .text-gray-850 {
+    color: #6c6c6c;
+  }
+  .text-1_5xl {
+    font-size: 1.375rem;
+  }
+  .text-3_5xl {
+    font-size: 2rem;
+  }
+  .text-primary {
+    color: var(--primary);
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .form-shadow {
+    box-shadow: 2px 5px 10px 0px #0000001a;
+  }
+  .rounded-2_5xl {
+    border-radius: 1.25rem;
+  }
+  .px-7_5 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .pt-10_5 {
+    padding-top: 41px;
+  }
+  .bg-gradient-1 {
+    background: linear-gradient(71deg, #feaf00 0%, #f8d442 100%);
+  }
 }
