@@ -6,8 +6,8 @@ const Dashboard = () => {
   return (
     <div>
       <SideBar />
-      <Header />
-      <Link href="/dashboard/students">Students</Link>
+      {/* <Header /> */}
+      {/* <Link href="/dashboard/students">Students</Link> */}
     </div>
   )
 }
