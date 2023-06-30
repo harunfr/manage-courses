@@ -1,9 +1,12 @@
 import Link from 'next/link'
+import SideBar from '@/components/dashboard/SideBar'
+import Header from '@/components/dashboard/Header'
 
 const Dashboard = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <SideBar />
+      <Header />
       <Link href="/dashboard/students">Students</Link>
     </div>
   )
