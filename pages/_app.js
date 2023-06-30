@@ -6,7 +6,7 @@ import '@/styles/globals.css'
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter()
 
-  // Sayfa yüklendiğinde kontrol et
+  // Sayfa yüklendiğinde yonlendir
   useEffect(() => {
     if (router.pathname === '/') {
       router.push('/signin')
