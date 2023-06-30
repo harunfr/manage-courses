@@ -17,7 +17,7 @@ const Signin = () => {
 
   return (
     <div>
-      <h1>Signin Page</h1>
+      <h1 className="test-tailwind">Signin Page</h1>
       <input
         type="email"
         placeholder="Email"
