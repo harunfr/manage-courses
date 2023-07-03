@@ -110,7 +110,6 @@ export default function Students() {
   }
 
   const handleShowSideBar = () => {
-    console.log(showSideBar)
     setShowSideBar(!showSideBar)
   }
 

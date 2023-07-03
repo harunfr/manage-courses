@@ -9,7 +9,7 @@ const StudentList = ({
   handleDeleteStudent,
   error
 }) => {
-  if (error && !data) {
+  if (error) {
     return (
       <div className="flex h-[630px] items-center justify-center">
         <div
