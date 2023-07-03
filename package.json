@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --ignore-path .gitignore --check \"**/*.+(jsx|json|js|css|html)\"",
+    "format:fix": "prettier --ignore-path .gitignore --write \"**/*.+(jsx|json|js|css|html)\""
   },
   "dependencies": {
     "next": "13.4.7",
