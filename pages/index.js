@@ -5,7 +5,9 @@ const HomePage = () => {
     <div>
       <h1>Welcome to Manage Courses</h1>
       <h2>Redirecting to signin...</h2>
-      <Link href="/signin">Signin</Link>
+      <Link className="text-blue-300" href="/signin">
+        Signin
+      </Link>
     </div>
   )
 }

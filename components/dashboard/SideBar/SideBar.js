@@ -98,9 +98,9 @@ const SideBar = ({ selectedPage, showSideBar }) => {
         </nav>
       </div>
       <div className="mb-4 mt-auto flex cursor-pointer items-end gap-x-6 rounded px-4 pb-4 pt-4 hover:bg-[#feae0060]">
-        <a href="#" className="text-sm font-medium ">
+        <Link href="/" className="text-sm font-medium ">
           Logout
-        </a>
+        </Link>
         <Logout />
       </div>
     </div>

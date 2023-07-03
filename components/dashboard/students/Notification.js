@@ -8,7 +8,7 @@ function Notification({ message, duration, onClose }) {
   }, [onClose, duration])
 
   return (
-    <div className="fixed bottom-0 right-0 animate-bounce rounded-lg bg-green-500 p-4 text-white shadow-lg">
+    <div className="fixed bottom-0 right-3 animate-bounce rounded-lg bg-green-500 p-4 text-white shadow-lg">
       {message}
     </div>
   )
