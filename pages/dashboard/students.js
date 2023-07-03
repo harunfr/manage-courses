@@ -1,52 +1,62 @@
-// student.js
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import SearchInput from '../../components/dashboard/students/SearchInput'
+// dashboard genel
+import SideBar from '@/components/dashboard/SideBar/SideBar'
+import Header from '@/components/dashboard/Header'
+
+// students sayfasina ozel
 import StudentList from '../../components/dashboard/students/StudentList'
 import Pagination from '../../components/dashboard/students/Pagination'
+import StudentForm from '../../components/dashboard/students/StudentForm/StudentForm'
+import StudentsHeader from '@/components/dashboard/students/StudentsHeader'
+import Notification from '@/components/dashboard/students/Notification'
+
+// helper function lar
 import {
   createApiQueryString,
   createURLPath,
 } from '../../utils/apiUtils'
-import StudentForm from '../../components/dashboard/students/StudentForm'
 
 export default function Students() {
+  // router i baslat
   const router = useRouter()
 
+  // STATE ler
+  // pagination ve search
   const [searchText, setSearchText] = useState('')
   const [perPage, setPerPage] = useState('6')
   const [currentPage, setCurrentPage] = useState(1)
+
+  // data fetch
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
-  const [editingStudentId, setEditingStudentId] = useState(null)
-  const [showCreateForm, setShowCreateForm] = useState(false)
+
+  // crud operasyonlar
+  const [showSideBar, setShowSideBar] = useState(null)
+  const [showForm, setShowForm] = useState(false)
+  const [notification, setNotification] = useState(null)
+  const [editingStudentData, setEditingStudentData] = useState(null)
 
   useEffect(() => {
-    setData(null) // Reset the data to null
+    // loading durumunu gosterebilmek icin
+    setData(null)
 
+    // query parametrelerini almak icin
     const { page, size, search } = router.query
 
-    console.log(`page: ${page}, size: ${size}, search: ${search}`)
-
+    // sayfa ilk yuklenirken sayfadaki ogeler url ile eslesiyor
     setCurrentPage(Number(page) || 1)
     setPerPage(size || '6')
     setSearchText(search || '')
 
     const fetchData = async () => {
       try {
-        console.log(
-          `query str: ${createApiQueryString(page, size, search)}`
-        )
         const response = await fetch(
           createApiQueryString(page, size, search)
         )
 
-        if (!response.ok) {
-          throw new Error('Error loading data')
-        }
         const responseData = await response.json()
-        console.log(responseData)
         setData(responseData)
         setError(null)
       } catch (error) {
@@ -58,6 +68,8 @@ export default function Students() {
     fetchData()
   }, [router.query])
 
+  // EVENT HANDLERS
+  // search ve pagination
   const handleSearch = (e) => {
     const newSearchText = e.target.value
     setCurrentPage(1)
@@ -66,9 +78,10 @@ export default function Students() {
   }
 
   const handlePerPageChange = (e) => {
-    setPerPage(e.target.value)
+    const newPage = e.target.value
+    setPerPage(newPage)
     setCurrentPage(1)
-    router.push(createURLPath(searchText, e.target.value, 1))
+    router.push(createURLPath(searchText, newPage, 1))
   }
 
   const handlePrevPage = () => {
@@ -85,75 +98,145 @@ export default function Students() {
     router.push(createURLPath(searchText, perPage, newPage))
   }
 
+  // ui elementleri
+  const handleOpenEditForm = (studentData) => {
+    setEditingStudentData(studentData)
+    setShowForm(true)
+  }
+
+  const handleShowForm = () => {
+    setShowForm(!showForm)
+  }
+
+  const handleCancel = () => {
+    setEditingStudentData(null)
+    setShowForm(false)
+  }
+
+  const handleShowSideBar = () => {
+    console.log(showSideBar)
+    setShowSideBar(!showSideBar)
+  }
+
+  // api icin crud operasyonlar
   const handleCreateStudent = (studentData) => {
-    // Logic to create a new student
-    console.log('Creating student:', studentData)
-    // Perform the necessary API request or state update to create a new student
+    fetch('https://dummyjson.com/users/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(studentData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const addedStudent = data.firstName + ' ' + data.lastName
+        setNotification({
+          message: `Student ${addedStudent} successfully added`,
+          duration: 3000,
+        })
+      })
+      .catch((error) => {
+        setError('Can not add student, reason:' + error.message)
+      })
+
+    setShowForm(false)
   }
 
-  const handleUpdateStudent = (studentId, studentData) => {
-    // Logic to update an existing student
-    console.log('Updating student:', studentId, studentData)
-    // Perform the necessary API request or state update to update the student
-  }
+  const handleEditStudent = (studentData) => {
+    fetch(`https://dummyjson.com/users/${studentData.id}`, {
+      method: 'PATCH' /* ya da PUT */,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(studentData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEditingStudentData(null)
+        const editedStudent = data.firstName + ' ' + data.lastName
+        setNotification({
+          message: `Student ${editedStudent} successfully edited`,
+          duration: 3000,
+        })
+      })
+      .catch((error) => {
+        setError('Can not edit student, reason:' + error.message)
+      })
 
-  const handleEditStudent = (studentId) => {
-    setEditingStudentId(studentId)
+    setShowForm(false)
   }
 
   const handleDeleteStudent = (studentId) => {
-    // Logic to delete a student
     console.log('Deleting student:', studentId)
-    // Perform the necessary API request or state update to delete the student
-  }
-
-  const handleCancelEdit = () => {
-    setEditingStudentId(null)
-    setShowCreateForm(false)
-  }
-
-  const handleShowCreateForm = () => {
-    setShowCreateForm(true)
+    fetch(`https://dummyjson.com/users/${studentId}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const deletedStudent = data.firstName + ' ' + data.lastName
+        setNotification({
+          message: `Student ${deletedStudent} successfully deleted`,
+          duration: 3000,
+        })
+      })
+      .catch((error) => {
+        setError('Can not delete student, reason:' + error.message)
+      })
   }
 
   return (
-    <div>
-      <button onClick={handleShowCreateForm}>Add New Student</button>
-      <SearchInput
-        searchText={searchText}
-        handleSearch={handleSearch}
-      />
-      <StudentList
-        data={data}
-        handleEditStudent={handleEditStudent}
-        handleDeleteStudent={handleDeleteStudent}
-      />
+    <div className="flex">
+      <SideBar selectedPage="Students" showSideBar={showSideBar} />
 
-      <Pagination
-        currentPage={currentPage}
-        perPage={perPage}
-        data={data}
-        handlePerPageChange={handlePerPageChange}
-        handlePrevPage={handlePrevPage}
-        handleNextPage={handleNextPage}
-      />
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <Header showSideBarHandler={handleShowSideBar} />
 
-      {editingStudentId && (
-        <StudentForm
-          initialData={data?.users.find(
-            (user) => user.id === editingStudentId
+        {/* Students sayfasi ozel */}
+        <main className="flex-1 bg-[#F8F8F8] px-[1.875rem]">
+          {/* Students Headeri */}
+          <StudentsHeader
+            searchText={searchText}
+            handleSearch={handleSearch}
+            handleShowCreateForm={handleShowForm}
+          />
+
+          {/* Students Tablosu */}
+          <StudentList
+            data={data}
+            openEditFormHandler={handleOpenEditForm}
+            handleDeleteStudent={handleDeleteStudent}
+            error={error}
+          />
+
+          {/* Pagination Students Tablo alti */}
+          <Pagination
+            currentPage={currentPage}
+            perPage={perPage}
+            data={data}
+            handlePerPageChange={handlePerPageChange}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
+
+          {/* Create & Edit Form */}
+          {showForm && (
+            <StudentForm
+              handleShowForm={handleShowForm}
+              handleCreateStudent={handleCreateStudent}
+              handleEditStudent={handleEditStudent}
+              initialData={editingStudentData}
+              cancelHandler={handleCancel}
+            />
           )}
-          handleSubmit={handleUpdateStudent} // Use handleUpdateStudent for editing
-          handleCancel={handleCancelEdit}
-        />
-      )}
 
-      {showCreateForm && (
-        <StudentForm
-          handleSubmit={handleCreateStudent}
-          handleCancel={handleCancelEdit}
-        />
-      )}
+          {/* Notification dialog */}
+          {notification && (
+            <Notification
+              message={notification.message}
+              duration={notification.duration}
+              onClose={() => setNotification(null)}
+            />
+          )}
+
+          {/*  */}
+        </main>
+      </div>
     </div>
   )
 }

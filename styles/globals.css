@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,6 +16,10 @@ html {
 
 .WWWWWW {
   @apply rounded;
+}
+
+.thead {
+  @apply mb-[-8px] px-4 py-3 text-start text-xs font-semibold text-[#ACACAC];
 }
 
 @layer utilities {
@@ -56,6 +61,4 @@ html {
   .bg-gradient-1 {
     background: linear-gradient(71deg, #feaf00 0%, #f8d442 100%);
   }
-
-  /* dashboard body #FDFDFD */
 }

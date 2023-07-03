@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import SideBar from '@/components/dashboard/SideBar'
+import SideBar from '@/components/dashboard/SideBar/SideBar'
 import Header from '@/components/dashboard/Header'
+import DashboardHome from '@/components/dashboard/Home/Home'
 
 const Dashboard = () => {
   return (
-    <div>
-      <SideBar />
-      {/* <Header /> */}
-      {/* <Link href="/dashboard/students">Students</Link> */}
+    <div className="flex">
+      <SideBar selectedPage="Home" />
+      <div className="flex flex-1 flex-col">
+        <Header />
+        <DashboardHome />
+      </div>
     </div>
   )
 }

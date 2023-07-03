@@ -13,8 +13,8 @@ const Signin = () => {
   }
 
   return (
-    <div className="bg-gradient-1 flex min-h-screen flex-col items-center justify-center">
-      <div className="form-shadow rounded-2_5xl px-7_5 pt-10_5 min-w	w-96 min-w-[475px] bg-white pb-11">
+    <div className="bg-gradient-1 flex min-h-screen min-w-[100vw] flex-col items-center  justify-center">
+      <div className="form-shadow rounded-2_5xl px-7_5 pt-10_5 w-[96vw] bg-white pb-11 sm:w-[475px]">
         <h1 className="text-3_5xl mb-9 text-center font-bold uppercase">
           <span className="special-left-border"></span>
           Manage Courses
@@ -39,7 +39,7 @@ const Signin = () => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border px-4 py-3.5 text-xs placeholder-[#CDCDCD] focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-md border px-4 py-3.5 text-xs placeholder-[#CDCDCD] focus:border-[#f8d442] focus:outline-none"
             required
           />
         </div>
@@ -57,13 +57,13 @@ const Signin = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className=" mb-8 w-full rounded-md border px-4 py-3.5 text-xs font-thin placeholder-[#CDCDCD] focus:border-blue-500 focus:outline-none"
+            className=" mb-8 w-full rounded-md border px-4 py-3.5 text-xs font-thin placeholder-[#CDCDCD] focus:border-[#f8d442] focus:outline-none"
             required
           />
         </div>
         <button
           onClick={handleSignin}
-          className="focus:shadow-outline bg-primary mb-7 w-full rounded px-4 py-3 text-sm font-medium uppercase text-white hover:bg-blue-600 focus:outline-none"
+          className="focus:shadow-outline bg-primary mb-7 w-full rounded px-4 py-3 text-sm font-medium uppercase text-white hover:opacity-70	 focus:outline-none"
         >
           Sign In
         </button>

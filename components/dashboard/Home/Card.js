@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Card = ({ Icon, bgColor, amount, type }) => (
-  // en fazla 160px daralabilir
+  // en fazla 160px daralabilir, devaminda yeni satira tasmali
   <div
-    className={`flex min-w-[160px] flex-col rounded-lg bg-[${bgColor}] flex-none lg:flex-1`}
+    className={`flex min-w-[160px] flex-col rounded-lg bg-[${bgColor}] flex-none cursor-pointer transition-transform hover:scale-105 hover:shadow-md lg:flex-1`}
     style={{
       background:
         type === 'users'
