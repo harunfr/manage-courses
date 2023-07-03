@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
 function SidebarLink({ href, text, Icon, selected }) {
   return (
@@ -7,10 +7,10 @@ function SidebarLink({ href, text, Icon, selected }) {
       <Link
         href={href}
         className={`flex-1 rounded ${
-          selected && 'bg-[#FEAF00]'
+          selected && "bg-[#FEAF00]"
         } block cursor-pointer	text-sm font-medium hover:bg-[#feae0060]`}
         style={{
-          padding: '10px 52px 10px 39px',
+          padding: "10px 52px 10px 39px"
         }}
       >
         <div className="flex items-center gap-x-4">

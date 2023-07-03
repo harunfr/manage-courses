@@ -1,11 +1,7 @@
-import React from 'react'
-import Search from '../../../assets/search.svg'
+import React from "react"
+import Search from "../../../assets/search.svg"
 
-function StudentsHeader({
-  searchText,
-  handleSearch,
-  handleShowCreateForm,
-}) {
+function StudentsHeader({ searchText, handleSearch, handleShowCreateForm }) {
   return (
     <div className="flex h-[67.5px] flex-wrap items-center justify-between border-b border-[#E5E5E5] ">
       <h1 className="text-[1.375rem] font-bold">Students List</h1>
@@ -22,9 +18,9 @@ function StudentsHeader({
           <Search
             className="absolute"
             style={{
-              top: '50%',
-              right: '14px',
-              transform: 'translateY(-50%)',
+              top: "50%",
+              right: "14px",
+              transform: "translateY(-50%)"
             }}
           />
         </div>

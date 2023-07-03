@@ -1,5 +1,5 @@
 export function createApiQueryString(page, size = 6, search) {
-  let queryStr = 'https://dummyjson.com/users'
+  let queryStr = "https://dummyjson.com/users"
   let queryCount = 0
 
   if (search) {
@@ -9,9 +9,9 @@ export function createApiQueryString(page, size = 6, search) {
 
   if (size) {
     if (queryCount > 0) {
-      queryStr += '&'
+      queryStr += "&"
     } else {
-      queryStr += '?'
+      queryStr += "?"
     }
     queryCount += 1
     queryStr += `limit=${size}`
@@ -19,9 +19,9 @@ export function createApiQueryString(page, size = 6, search) {
 
   if (page) {
     if (queryCount > 0) {
-      queryStr += '&'
+      queryStr += "&"
     } else {
-      queryStr += '?'
+      queryStr += "?"
     }
     queryCount += 1
     queryStr += `skip=${(page - 1) * size}`
@@ -31,15 +31,15 @@ export function createApiQueryString(page, size = 6, search) {
 }
 
 export function createURLPath(searchText, perPage, currentPage) {
-  let path = '/dashboard/students'
+  let path = "/dashboard/students"
 
   const params = new URLSearchParams()
 
   if (searchText) {
-    params.set('search', searchText)
+    params.set("search", searchText)
   }
-  params.set('size', perPage)
-  params.set('page', currentPage)
+  params.set("size", perPage)
+  params.set("page", currentPage)
 
   const queryString = params.toString()
   if (queryString) {

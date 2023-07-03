@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import { capitalize } from '../../../../utils/helperUtils'
+import { capitalize } from "../../../../utils/helperUtils"
 
 function StudentFormField({ value, onChangeHandler, name }) {
   return (

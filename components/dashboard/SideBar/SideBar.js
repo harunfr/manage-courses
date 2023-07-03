@@ -1,16 +1,16 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
-import Home from '../../../assets/home.svg'
-import Course from '../../../assets/course.svg'
-import Students from '../../../assets/students.svg'
-import Payment from '../../../assets/payment.svg'
-import Report from '../../../assets/report.svg'
-import Settings from '../../../assets/settings.svg'
-import Logout from '../../../assets/logout.svg'
+import Home from "../../../assets/home.svg"
+import Course from "../../../assets/course.svg"
+import Students from "../../../assets/students.svg"
+import Payment from "../../../assets/payment.svg"
+import Report from "../../../assets/report.svg"
+import Settings from "../../../assets/settings.svg"
+import Logout from "../../../assets/logout.svg"
 
-import SidebarLink from './SideBarLink'
+import SidebarLink from "./SideBarLink"
 
 const SideBar = ({ selectedPage, showSideBar }) => {
   return (
@@ -18,23 +18,19 @@ const SideBar = ({ selectedPage, showSideBar }) => {
       className="flex h-screen min-w-[270px] flex-col items-center bg-[#F2EAE1] max-lg:hidden"
       style={{
         display:
-          showSideBar === true
-            ? 'flex'
-            : showSideBar === false
-            ? 'none'
-            : '',
+          showSideBar === true ? "flex" : showSideBar === false ? "none" : ""
       }}
     >
       {/* Title */}
       <h1 className="mb-9 mt-[0.89rem] text-xl font-bold uppercase">
         <span
           style={{
-            borderLeft: '4px solid #F8D442',
-            display: 'inline-block',
-            height: '23px',
-            transform: 'translateY(4.5px)',
-            marginRight: '10px',
-            marginLeft: '-9px',
+            borderLeft: "4px solid #F8D442",
+            display: "inline-block",
+            height: "23px",
+            transform: "translateY(4.5px)",
+            marginRight: "10px",
+            marginLeft: "-9px"
           }}
         ></span>
         Manage Courses
@@ -62,37 +58,37 @@ const SideBar = ({ selectedPage, showSideBar }) => {
               href="/dashboard"
               text="Home"
               Icon={Home}
-              selected={selectedPage === 'Home'}
+              selected={selectedPage === "Home"}
             />
             <SidebarLink
               href="/dashboard"
               text="Course"
               Icon={Course}
-              selected={selectedPage === 'Course'}
+              selected={selectedPage === "Course"}
             />
             <SidebarLink
               href="/dashboard/students"
               text="Students"
               Icon={Students}
-              selected={selectedPage === 'Students'}
+              selected={selectedPage === "Students"}
             />
             <SidebarLink
               href="/dashboard"
               text="Payment"
               Icon={Payment}
-              selected={selectedPage === 'Payment'}
+              selected={selectedPage === "Payment"}
             />
             <SidebarLink
               href="/dashboard"
               text="Report"
               Icon={Report}
-              selected={selectedPage === 'Report'}
+              selected={selectedPage === "Report"}
             />
             <SidebarLink
               href="/dashboard"
               text="Settings"
               Icon={Settings}
-              selected={selectedPage === 'Settings'}
+              selected={selectedPage === "Settings"}
             />
           </ul>
         </nav>

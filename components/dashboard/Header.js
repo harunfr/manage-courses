@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
-import Back from '../../assets/back.svg'
-import Notifications from '../../assets/notifications.svg'
+import Back from "../../assets/back.svg"
+import Notifications from "../../assets/notifications.svg"
 
 const Header = ({ showSideBarHandler }) => {
   return (

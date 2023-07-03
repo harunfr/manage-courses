@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React, { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 
 // dashboard genel
-import SideBar from '@/components/dashboard/SideBar/SideBar'
-import Header from '@/components/dashboard/Header'
+import SideBar from "@/components/dashboard/SideBar/SideBar"
+import Header from "@/components/dashboard/Header"
 
 // students sayfasina ozel
-import StudentList from '../../components/dashboard/students/StudentList'
-import Pagination from '../../components/dashboard/students/Pagination'
-import StudentForm from '../../components/dashboard/students/StudentForm/StudentForm'
-import StudentsHeader from '@/components/dashboard/students/StudentsHeader'
-import Notification from '@/components/dashboard/students/Notification'
+import StudentList from "../../components/dashboard/students/StudentList"
+import Pagination from "../../components/dashboard/students/Pagination"
+import StudentForm from "../../components/dashboard/students/StudentForm/StudentForm"
+import StudentsHeader from "@/components/dashboard/students/StudentsHeader"
+import Notification from "@/components/dashboard/students/Notification"
 
 // helper function lar
-import {
-  createApiQueryString,
-  createURLPath,
-} from '../../utils/apiUtils'
+import { createApiQueryString, createURLPath } from "../../utils/apiUtils"
 
 export default function Students() {
   // router i baslat
@@ -24,8 +21,8 @@ export default function Students() {
 
   // STATE ler
   // pagination ve search
-  const [searchText, setSearchText] = useState('')
-  const [perPage, setPerPage] = useState('6')
+  const [searchText, setSearchText] = useState("")
+  const [perPage, setPerPage] = useState("6")
   const [currentPage, setCurrentPage] = useState(1)
 
   // data fetch
@@ -47,14 +44,12 @@ export default function Students() {
 
     // sayfa ilk yuklenirken sayfadaki ogeler url ile eslesiyor
     setCurrentPage(Number(page) || 1)
-    setPerPage(size || '6')
-    setSearchText(search || '')
+    setPerPage(size || "6")
+    setSearchText(search || "")
 
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          createApiQueryString(page, size, search)
-        )
+        const response = await fetch(createApiQueryString(page, size, search))
 
         const responseData = await response.json()
         setData(responseData)
@@ -120,21 +115,21 @@ export default function Students() {
 
   // api icin crud operasyonlar
   const handleCreateStudent = (studentData) => {
-    fetch('https://dummyjson.com/users/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(studentData),
+    fetch("https://dummyjson.com/users/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(studentData)
     })
       .then((res) => res.json())
       .then((data) => {
-        const addedStudent = data.firstName + ' ' + data.lastName
+        const addedStudent = data.firstName + " " + data.lastName
         setNotification({
           message: `Student ${addedStudent} successfully added`,
-          duration: 3000,
+          duration: 3000
         })
       })
       .catch((error) => {
-        setError('Can not add student, reason:' + error.message)
+        setError("Can not add student, reason:" + error.message)
       })
 
     setShowForm(false)
@@ -142,41 +137,41 @@ export default function Students() {
 
   const handleEditStudent = (studentData) => {
     fetch(`https://dummyjson.com/users/${studentData.id}`, {
-      method: 'PATCH' /* ya da PUT */,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(studentData),
+      method: "PATCH" /* ya da PUT */,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(studentData)
     })
       .then((res) => res.json())
       .then((data) => {
         setEditingStudentData(null)
-        const editedStudent = data.firstName + ' ' + data.lastName
+        const editedStudent = data.firstName + " " + data.lastName
         setNotification({
           message: `Student ${editedStudent} successfully edited`,
-          duration: 3000,
+          duration: 3000
         })
       })
       .catch((error) => {
-        setError('Can not edit student, reason:' + error.message)
+        setError("Can not edit student, reason:" + error.message)
       })
 
     setShowForm(false)
   }
 
   const handleDeleteStudent = (studentId) => {
-    console.log('Deleting student:', studentId)
+    console.log("Deleting student:", studentId)
     fetch(`https://dummyjson.com/users/${studentId}`, {
-      method: 'DELETE',
+      method: "DELETE"
     })
       .then((res) => res.json())
       .then((data) => {
-        const deletedStudent = data.firstName + ' ' + data.lastName
+        const deletedStudent = data.firstName + " " + data.lastName
         setNotification({
           message: `Student ${deletedStudent} successfully deleted`,
-          duration: 3000,
+          duration: 3000
         })
       })
       .catch((error) => {
-        setError('Can not delete student, reason:' + error.message)
+        setError("Can not delete student, reason:" + error.message)
       })
   }
 

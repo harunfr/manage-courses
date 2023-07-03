@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 
-import Close from '../../../../assets/close.svg'
+import Close from "../../../../assets/close.svg"
 
-import StudentFormField from './StudentFormField'
+import StudentFormField from "./StudentFormField"
 
 const StudentForm = ({
   initialData,
   handleEditStudent,
   handleCreateStudent,
   handleShowForm,
-  cancelHandler,
+  cancelHandler
 }) => {
   const [id, setId] = useState(null)
-  const [imageSrc, setImageSrc] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [webSite, setWebSite] = useState('')
-  const [company, setCompany] = useState('')
+  const [imageSrc, setImageSrc] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [webSite, setWebSite] = useState("")
+  const [company, setCompany] = useState("")
 
   useEffect(() => {
     if (initialData) {
@@ -43,7 +43,7 @@ const StudentForm = ({
       email,
       phone,
       webSite,
-      company,
+      company
     }
 
     if (initialData) {
@@ -55,13 +55,13 @@ const StudentForm = ({
     }
 
     // Reset
-    setImageSrc('')
-    setFirstName('')
-    setLastName('')
-    setEmail('')
-    setPhone('')
-    setWebSite('')
-    setCompany('')
+    setImageSrc("")
+    setFirstName("")
+    setLastName("")
+    setEmail("")
+    setPhone("")
+    setWebSite("")
+    setCompany("")
   }
 
   return (
@@ -70,7 +70,7 @@ const StudentForm = ({
         <form onSubmit={handleFormSubmit}>
           {/* Form Basligi */}
           <h1 className="mb-4 text-center text-xl font-semibold">
-            {initialData ? 'Edit Student' : 'Add New Student'}
+            {initialData ? "Edit Student" : "Add New Student"}
           </h1>
           <StudentFormField
             value={imageSrc}
@@ -115,7 +115,7 @@ const StudentForm = ({
               className="focus:shadow-outline bg-primary w-full rounded px-4 py-3 text-sm font-medium uppercase text-white hover:opacity-60		 focus:outline-none"
               onClick={handleFormSubmit}
             >
-              {initialData ? 'Update' : 'Save'}
+              {initialData ? "Update" : "Save"}
             </button>
 
             {/* Sag alt cancel butonu  */}

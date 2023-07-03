@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import Link from 'next/link'
+import { useRouter } from "next/router"
+import { useState } from "react"
+import Link from "next/link"
 
 const Signin = () => {
   const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleSignin = (e) => {
     e.preventDefault()
-    router.push('/dashboard')
+    router.push("/dashboard")
   }
 
   return (
@@ -73,7 +73,7 @@ const Signin = () => {
             className="text-primary font-semibold underline"
             href="/reset-password"
           >
-            {' '}
+            {" "}
             Reset Password
           </Link>
         </p>

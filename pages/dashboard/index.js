@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import SideBar from '@/components/dashboard/SideBar/SideBar'
-import Header from '@/components/dashboard/Header'
-import DashboardHome from '@/components/dashboard/Home/Home'
+import Link from "next/link"
+import SideBar from "@/components/dashboard/SideBar/SideBar"
+import Header from "@/components/dashboard/Header"
+import DashboardHome from "@/components/dashboard/Home/Home"
 
 const Dashboard = () => {
   return (

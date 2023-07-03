@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
-import Dropdown from '../../../assets/dropdown.svg'
-import Prev from '../../../assets/prev.svg'
-import Next from '../../../assets/next.svg'
+import Dropdown from "../../../assets/dropdown.svg"
+import Prev from "../../../assets/prev.svg"
+import Next from "../../../assets/next.svg"
 
 const Pagination = ({
   currentPage,
@@ -10,11 +10,9 @@ const Pagination = ({
   data,
   handlePerPageChange,
   handlePrevPage,
-  handleNextPage,
+  handleNextPage
 }) => {
-  const startIndex = !data?.total
-    ? 0
-    : perPage * (currentPage - 1) + 1
+  const startIndex = !data?.total ? 0 : perPage * (currentPage - 1) + 1
   const endIndex = Math.min(perPage * currentPage, data?.total) || 0
 
   const perPageOptions = [6, 12, 24]
