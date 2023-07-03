@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/router"
+import Head from "next/head"
 
 // dashboard genel
 import SideBar from "@/components/dashboard/SideBar/SideBar"
@@ -177,6 +178,10 @@ export default function Students() {
 
   return (
     <div className="flex">
+      <Head>
+        <title>Dashboard | Students</title>
+      </Head>
+
       <SideBar selectedPage="Students" showSideBar={showSideBar} />
 
       <div className="flex flex-1 flex-col overflow-hidden">

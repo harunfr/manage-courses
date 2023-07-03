@@ -1,6 +1,7 @@
-import { useRouter } from "next/router"
 import { useState } from "react"
+import { useRouter } from "next/router"
 import Link from "next/link"
+import Head from "next/head"
 
 const Signin = () => {
   const router = useRouter()
@@ -14,6 +15,10 @@ const Signin = () => {
 
   return (
     <div className="bg-gradient-1 flex min-h-screen min-w-[100vw] flex-col items-center  justify-center">
+      <Head>
+        <title>Sign in</title>
+      </Head>
+
       <div className="form-shadow rounded-2_5xl px-7_5 pt-10_5 w-[96vw] bg-white pb-11 sm:w-[475px]">
         <h1 className="text-3_5xl mb-9 text-center font-bold uppercase">
           <span className="special-left-border"></span>
